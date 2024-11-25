@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Profile Summary</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .header {
+        background-color: #3b3b3b;
+        color: #fff;
+        padding: 40px 0;
+        text-align: center;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 48px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        margin-left: 15px;
+      }
+
+      .header img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .search-form {
+        margin: 30px 0;
+        text-align: center;
+      }
+
+      .search-form input {
+        padding: 12px 20px;
+        font-size: 18px;
+        width: 300px;
+        border-radius: 50px;
+        border: 1px solid #ccc;
+        transition: all 0.3s ease;
+      }
+
+      .search-form input:focus {
+        border-color: #4caf50;
+        outline: none;
+        box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+      }
+
+      .search-form button {
+        padding: 12px 25px;
+        font-size: 18px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        margin-left: 10px;
+        transition: background-color 0.3s ease;
+      }
+
+      .search-form button:hover {
+        background-color: #45a049;
+      }
+
+      .clear-button {
+        display: none;
+        margin-top: 20px;
+        padding: 12px 20px;
+        font-size: 18px;
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .clear-button:hover {
+        background-color: #e63939;
+      }
+
+      .loading-message {
+        display: none;
+        text-align: center;
+        font-size: 18px;
+        color: #888;
+        margin-top: 20px;
+        font-weight: 500;
+      }
+
+      .profile-summary {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .profile-summary h2 {
+        margin-top: 0;
+        font-size: 28px;
+        color: #333;
+      }
+
+      .profile-summary p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #555;
+        white-space: pre-wrap;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 670px;
+        padding: 20px;
+        background-color: #3b3b3b;
+        color: #fff;
+        border-radius: 10px;
+      }
+
+      .footer a {
+        color: #4caf50;
+        margin: 0 15px;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+
+      @media screen and (max-width: 600px) {
+        .search-form input {
+          width: 80%;
+        }
+
+        .header h1 {
+          font-size: 36px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+          alt="GitHub Logo"
+        />
+        <h1>GitHub Profile Summary</h1>
+      </div>
+
+      <div class="search-form">
+        <form id="search-form">
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter GitHub username"
+            required
+          />
+          <button type="submit">Get Profile Summary</button>
+        </form>
+        <div id="loading-message" class="loading-message">
+          Your summary is generating. Please wait...
+        </div>
+      </div>
+
+      <div id="profile-summary" class="profile-summary" style="display:none;">
+        <h2>Profile Summary for <span id="profile-username"></span></h2>
+        <p id="summary-text"></p>
+        <button id="clear-button" class="clear-button">Clear</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>
+        <a href="https://github.com/sawanjr" target="_blank">GitHub</a>
+        <!-- <a href="https://www.instagram.com/your-instagram-username/" target="_blank">Instagram</a> -->
+        <a href="https://www.linkedin.com/in/sawan-kumar-bb8793243/" target="_blank">LinkedIn</a>
+      </p>
+    </div>
+
+    <script>
+      // Handle form submission
+      document.getElementById('search-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        showLoadingMessage();
+
+        const username = document.getElementById('username').value;
+        
+        // Simulate fetching data (replace with actual API call)
+        setTimeout(() => {
+          // Example of fetched profile data
+          const summary = `This is a summary for GitHub user: ${username}. \nThey are active in open source projects and have a strong background in web development.`;
+
+          // Display the generated summary
+          document.getElementById('profile-username').textContent = username;
+          document.getElementById('summary-text').textContent = summary;
+
+          document.getElementById('profile-summary').style.display = 'block';
+          document.getElementById('clear-button').style.display = 'block';
+          document.getElementById('loading-message').style.display = 'none';
+        }, 2000); // Simulate network delay
+      });
+
+      // Show loading message while waiting for summary
+      function showLoadingMessage() {
+        document.getElementById('loading-message').style.display = 'block';
+        document.getElementById('profile-summary').style.display = 'none';
+        document.getElementById('clear-button').style.display = 'none';
+      }
+
+      // Clear the profile summary
+      document.getElementById('clear-button').addEventListener('click', function () {
+        document.getElementById('profile-summary').style.display = 'none';
+        document.getElementById('clear-button').style.display = 'none';
+        document.getElementById('loading-message').style.display = 'none';
+        document.getElementById('username').value = ''; // Optionally clear input field
+      });
+    </script>
+  </body>
+</html>
