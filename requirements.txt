@@ -8,4 +8,4 @@ langchain-community
 pypdf
 uvicorn
 fastapi
-markdown
+python-multipart
