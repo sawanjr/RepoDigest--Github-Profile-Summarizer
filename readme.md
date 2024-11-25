@@ -1,59 +1,106 @@
-# Email Generator
-
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+# GitHub Profile Summary App
 
 ## Overview
 
-The Email Generator is a powerful tool that uses Large Language Models (LLMs) to craft customized email content based on user-defined subjects and tones. Whether you need a formal business email, a friendly message, or something with a touch of humor, this tool has you covered.
+The **GitHub Profile Summary App** allows users to quickly generate a summary of a GitHub profile by simply entering the GitHub username. It fetches the user's public data from GitHub using the GitHub API and displays a summarized version of the profile, including information such as public repositories, followers, following count, and more.
 
-This repository provides the code and instructions to use the Email Generator, which leverages OpenAI's GPT-3 language model for generating email content. The project is integrated with Streamlit, making it easy for users to input their preferences and generate tailored email text.
+### Features:
+- **GitHub Profile Summary**: Displays key statistics such as repositories, followers, and following.
+- **Instant Profile Search**: Enter a GitHub username to fetch and display a summary of their profile.
+- **Loading Message**: A dynamic loading message is displayed while fetching the profile data.
+- **Clear Button**: Allows users to clear the displayed summary and start fresh.
+- **Responsive UI**: The app is mobile-friendly, adjusting seamlessly to smaller screens.
 
-## How It Works
+## Tech Stack
 
-The Email Generator operates in two main steps:
+- **Frontend**: HTML, CSS, JavaScript (Vanilla)
+- **Backend**: Python (Flask)
+- **APIs**: GitHub REST API
+- **Libraries/Tools**:
+  - [FontAwesome](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css) for icons.
+  - [Bootstrap](https://getbootstrap.com/) for responsive design (optional).
 
-1. **Email Generation**: The heart of the system is a Python script that uses Langchain, a framework for working with LLMs. The script takes user inputs for the subject and tone of the email. It then uses the OpenAI GPT-3 model to generate a brief, two-line email, ensuring that the tone and content align with the user's preferences.
+## Prerequisites
 
-2. **User Interface with Streamlit**: To make the Email Generator accessible and user-friendly, we've built a Streamlit web application. Users can input the subject (up to 30 characters) and select their desired tone from a range of options, such as formal, informal, friendly, and more. Upon clicking the "Generate Email" button, the application calls the email generation script and displays the generated email along with the chosen subject and tone.
+Before running the app locally, ensure you have the following installed:
+- **Python** 3.x
+- **pip** (Python package manager)
 
-## Getting Started
+## Installation
 
-### Prerequisites
+1. Clone the repository:
 
-Before using the Email Generator, you need to have Python and a few dependencies installed. Make sure you have the following:
+    ```bash
+    git clone https://github.com/sawanjr/RepoDigest--Github-Profile-Summarizer.git
+    ```
 
-- Python 3.6 or higher
-- Required Python packages (install with `pip install -r requirements.txt`):
-  - `langchain`
-  - `streamlit`
-  - `dotenv`
+2. Navigate to the project directory:
 
-### Usage
+    ```bash
+    cd github-profile-summary
+    ```
 
-1. Clone this repository to your local machine.
+3. Install the required dependencies:
 
-2. Create a `.env` file with your OpenAI API key and any other necessary environment variables. You can use the provided `.env.example` as a template.
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-3. Run the Streamlit application:
+## Running the App
 
+1. Run the Flask server:
 
-4. Access the Email Generator in your web browser at the provided URL (usually `http://localhost:8501`).
+    ```bash
+    python app.py
+    ```
 
-5. Enter the subject and choose the tone for your email, then click the "Generate Email" button to see the generated content.
+2. Open your browser and go to:
 
-## Developer Information
+    ```bash
+    http://127.0.0.1:5000
+    ```
 
-This Email Generator project is maintained by Sawan Kumar, a passionate explorer of machine learning and Large Language Models. You can connect with the developer via:
+3. Enter a GitHub username in the input field to fetch the profile summary.
 
-- [GitHub](https://github.com/sawanjr)
-- [LinkedIn](https://www.linkedin.com/in/sawan-kumar-bb8793243)
+## Functionality
+
+- **GitHub Profile Summary**: When a valid GitHub username is entered, the app fetches data from the GitHub API and displays the summary, including repositories, followers, following, and more.
+- **Clear Button**: The "Clear" button is hidden initially and only appears after the profile summary is generated. Once clicked, it resets the input field and hides the summary, ready for a new search.
+- **Mobile-Friendly**: The design adjusts automatically for smaller screens.
+
+## Screenshots
+
+### Desktop View
+![Desktop View](images/desktop-view.png)
+
+## Contributing
+
+We welcome contributions to enhance the app! Feel free to fork the repository and submit a pull request. Here's how you can contribute:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add new feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Open a pull request.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## Acknowledgements
 
-- OpenAI for providing the GPT-3 model, enabling innovative language generation applications.
-- Streamlit for simplifying the creation of interactive web applications.
-- The open-source community for contributing to the tools and libraries used in this project.
+- [GitHub REST API](https://docs.github.com/en/rest) for fetching user data.
+- [FontAwesome](https://fontawesome.com/) for providing icons.
+- [Flask](https://flask.palletsprojects.com/en/2.0.x/) for the backend web framework.
+- [Bootstrap](https://getbootstrap.com/) for responsive design.
+
+## Contact
+
+If you have any questions or suggestions, feel free to reach out to me via:
+
+- **GitHub**: [Your GitHub Profile](https://github.com/sawanjr)
+- **LinkedIn**: [Your LinkedIn Profile](https://www.linkedin.com/in/sawan-kumar-bb8793243/)
+
+---
+
+Thank you for using the **RepoDigest- GitHub Profile Summary App**! 🎉
