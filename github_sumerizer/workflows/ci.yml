@@ -1,35 +1,51 @@
-name: GitHub Profile Summary CI
+name: GitHub Profile Summary CI & Local Deployment
 
 on:
   push:
     branches:
-      - main  # Trigger the action on push to the main branch
+      - main
   pull_request:
     branches:
-      - main  # Trigger the action on PRs targeting the main branch
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Run the build on the latest version of Ubuntu
+    runs-on: ubuntu-latest  # Runs on the latest Ubuntu environment
     
     steps:
-    # Step 1: Checkout the repository
+    # Step 1: Checkout code
     - name: Checkout code
       uses: actions/checkout@v3
-
-    # Step 2: Set up Python environment
+    
+    # Step 2: Set up Python
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.11'  #
+        python-version: '3.11'
+    
     # Step 3: Install dependencies
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt  # Make sure your requirements.txt is present with all dependencies
-
-    # Step 4: Build and deploy 
-    - name: Build and deploy
+        pip install -r requirements.txt  # Ensure your requirements are correctly listed in requirements.txt
+    
+    # Step 4: Set up Docker
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v2
+      with:
+        version: 'latest'
+    
+    # Step 5: Build the Docker image
+    - name: Build Docker image
       run: |
-        echo "Build and deploy steps go here"
-        # You can add deployment commands here if you're deploying to a server or a platform (like Heroku)
+        docker build -t github-profile-summary .
+    
+    # Step 6: Run the Docker container to simulate local deployment
+    - name: Run Docker container
+      run: |
+        docker run -d -p 8000:8000 github-profile-summary  # Replace with your app's port if necessary
+    
+    # Step 7: Check if the app is running (for testing)
+    - name: Check if the app is running
+      run: |
+        curl http://localhost:5000  # Test the app by hitting the URL on the container's port
