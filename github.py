@@ -10,7 +10,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 app = FastAPI()
 
 # Setup for LangChain's Google Generative AI
-GEMINI_API_KEY = "AIzaSyC2ONnLcokJ0awQLYF24A966Hgv7E8hIsA"  # Replace with your actual API key
+GEMINI_API_KEY = "...."  # Replace with your actual API key
 llm = ChatGoogleGenerativeAI(
     model="gemini-1.5-pro",
     temperature=0,
