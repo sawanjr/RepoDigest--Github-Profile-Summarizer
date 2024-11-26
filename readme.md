@@ -71,7 +71,8 @@ Before running the app locally, ensure you have the following installed:
 ## Screenshots
 
 ### Desktop View
-![Desktop View](images/desktop-view.png)
+![Desktop View](https://github.com/sawanjr/RepoDigest--Github-Profile-Summarizer/blob/main/templates/git_0.png)
+![](https://github.com/sawanjr/RepoDigest--Github-Profile-Summarizer/blob/main/templates/git_1.png)
 
 ## Contributing
 
